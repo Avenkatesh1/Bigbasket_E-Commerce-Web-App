@@ -10,10 +10,10 @@
               <h2 class="text-center mb-4">Sign Into Your Account</h2>
               <form action="#">
                 <div class="mb-3 form-box">
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
+                  <input type="email" [(ngModel)]="loginObj.email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
                 </div>
                 <div class="mb-3">
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password" required>
+                  <input type="password" [(ngModel)]="loginObj.password" class="form-control" id="password" name="password" placeholder="Enter Your Password" required>
                 </div>
                 <div class="mb-3">
                   <div class="form-check">
@@ -23,7 +23,7 @@
                   </div>
       
                 </div>
-                <button type="submit" class="btn btn-outline-secondary login-btn w-100 mb-3">Login</button>
+                <button type="submit" class="btn btn-outline-secondary login-btn w-100 mb-3" (click)="onLogin()">Login</button>
                 <div class="social-login mb-3 type--A">
                   <h5 class="text-center mb-3">Social Login</h5>
                   <button class="btn btn-outline-secondary  mb-3"><i class="fa-brands fa-google text-danger"></i> Sign With Google</button>
