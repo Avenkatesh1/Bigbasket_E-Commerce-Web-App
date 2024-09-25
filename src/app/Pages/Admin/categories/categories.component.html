@@ -1,1 +1,28 @@
-<p>categories works!</p>
+<div class="row p-2">
+    <div class="col-12">
+        <div >
+         <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S No</th>
+                    <th>Category Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="bg-info">
+                @for (item of productList; track $index) {
+                   <tr>
+                     <td>{{$index + 1}}</td>
+                     <td>{{item.categoryName}}</td>
+                     <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-warning mx-2" (click)="onDelete(item.categoryId)">Delete</button>
+                     </td>
+                         
+                   </tr>
+                }
+            </tbody>
+         </table>
+        </div>
+    </div>
+</div>
