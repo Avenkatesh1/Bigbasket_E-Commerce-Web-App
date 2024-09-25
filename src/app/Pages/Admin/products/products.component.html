@@ -90,7 +90,12 @@
                   </div>
                   <div class="col-6">
                     <label for="sku" class="form-label">Category</label>
-                    <input type="text" class="form-control" [(ngModel)]="productObject.categoryId ">
+                    <select name="category" [(ngModel)]="productObject.categoryId" class="form-select" id="">
+                      <option selected>Select Categories</option>
+                      @for (item of categoryList; track $index) {
+                        <option value="{{item.categoryId }}">{{item.categoryName}}</option>
+                      }
+                    </select>
                   </div>
                   <div class="col-6">
                     <label for="sku" class="form-label">Develery Time Span</label>
