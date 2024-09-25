@@ -1,1 +1,114 @@
-<p>products works!</p>
+<div class="row p-2">
+    <div [ngClass]="isSidePanelVisible ?'col-8':'col-12'" >
+      <div class="card">
+        <div class="card-header bg-warning">
+           <div class="row">
+            <div class="col-6">
+              <h4>Product-List</h4>
+            </div>
+            <div class="col-6 text-end">
+              <button class="btn btn-sm btn-success px-3 py-2" (click)="openSidePanel()">New</button>
+            </div>
+            </div>
+           </div>
+          
+        <div class="card-body">
+            <div class="row">
+              <div class="col-3">
+                <div class="card">
+                  <img src="..." class="card-img-top" alt="Card Image">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="card">
+                  <img src="..." class="card-img-top" alt="Card Image">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="card">
+                  <img src="..." class="card-img-top" alt="Card Image">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="card">
+                  <img src="..." class="card-img-top" alt="Card Image">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      </div>
+    <div class="col-4" *ngIf="isSidePanelVisible">
+        <div class="card">
+            <div class="card-header bg-warning">
+              <div class="row">
+                <div class="col-6">
+                  <h4>New Products</h4>
+                </div>
+                <div class="col-6 text-end">
+                  <button class="btn btn-sm btn-success px-3 py-2" (click)="closeSidePanel()">Close</button>
+                </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                  <div class="col-6">
+                    <label for="sku" class="form-label"> SKU</label>
+                    <input type="text" class="form-control" [(ngModel)]="productObject.productSku">
+                  </div>
+                  <div class="col-6">
+                    <label for="sku" class="form-label">Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="productObject.productName">
+                  </div>
+                  <div class="col-6">
+                    <label for="sku" class="form-label">Short Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="productObject.productShortName">
+                  </div>
+                  <div class="col-6">
+                    <label for="sku" class="form-label">Price</label>
+                    <input type="text" class="form-control" [(ngModel)]="productObject.productPrice">
+                  </div>
+                  <div class="col-6">
+                    <label for="sku" class="form-label">Category</label>
+                    <input type="text" class="form-control" [(ngModel)]="productObject.categoryId ">
+                  </div>
+                  <div class="col-6">
+                    <label for="sku" class="form-label">Develery Time Span</label>
+                    <input type="text" class="form-control" [(ngModel)]="productObject.deliveryTimeSpan">
+                  </div>
+                  <div class="col-12">
+                    <label for="sku" class="form-label">Image Url</label>
+                    <input type="text" class="form-control" [(ngModel)]="productObject.productImageUrl">
+                  </div>
+                  <div class="col-12">
+                    <label for="sku" class="form-label">Discription</label>
+                    <textarea rows="4" class="form-control" [(ngModel)]="productObject.productDescription"></textarea>
+                  </div>
+                  <div class="col-12 text-start p-2">
+                    <button class="btn btn-sm btn-success px-3 py-2" (click)="saveProduct()">Save</button>
+                </div>
+            </div>
+          </div>
+    </div>
+    
+</div>
