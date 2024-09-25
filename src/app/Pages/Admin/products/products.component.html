@@ -14,46 +14,19 @@
           
         <div class="card-body">
             <div class="row">
+              @for (item of productList; track $index) {
               <div class="col-3">
                 <div class="card">
-                  <img src="..." class="card-img-top" alt="Card Image">
+                  <img [src]="item.productImageUrl" height="200px" class="card-img-top" alt="Card Image">
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">{{item.productName}}</h5>
+                    <p class="card-text">{{item.categoryName}}</p>
+                    <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
+                    <button class="btn btn-danger mx-2" (click)="onDelete(item.productId)">Delete</button>
                   </div>
                 </div>
               </div>
-              <div class="col-3">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="Card Image">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="Card Image">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="Card Image">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
+            }
             </div>
         </div>
       </div>
@@ -109,9 +82,15 @@
                     <label for="sku" class="form-label">Discription</label>
                     <textarea rows="4" class="form-control" [(ngModel)]="productObject.productDescription"></textarea>
                   </div>
-                  <div class="col-12 text-start p-2">
-                    <button class="btn btn-sm btn-success px-3 py-2" (click)="saveProduct()">Save</button>
-                </div>
+                   <div class="row p-2">
+                    <div class="col-6">
+                      <button class="btn btn-sm btn-success px-3 py-2" (click)="saveProduct()">Reset</button>
+                    </div>
+                    <div class="col-6">
+                      <button class="btn btn-sm btn-primary text-end px-3 py-2" *ngIf="productObject.productId == 0" (click)="saveProduct()">Create Products</button>
+                      <button class="btn btn-sm btn-warning text-end px-3 py-2" *ngIf="productObject.productId != 0" (click)="updateProduct()">Update Products</button>
+                    </div>
+                   </div>
             </div>
           </div>
     </div>

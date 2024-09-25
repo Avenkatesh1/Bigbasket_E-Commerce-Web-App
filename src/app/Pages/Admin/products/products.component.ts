@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit{
   isSidePanelVisible: boolean = false;
   productService = inject(ProductService)
   categoryList: any[] = [];
+  productList: any[] = [];
 
   productObject: any = {
     "productId": 0,
@@ -29,6 +30,7 @@ export class ProductsComponent implements OnInit{
   }
   ngOnInit(): void {
     this.getAllCategories();
+    this.getAllProduct();
   }
 
   openSidePanel(){
@@ -40,7 +42,49 @@ export class ProductsComponent implements OnInit{
   }
 
   saveProduct(){
+     this.productService.saveProducts(this.productObject).subscribe((res: any) => {
+         if(res.result){
+          alert('products has been saved');
+          this.getAllProduct();
+         }else{
+          alert(res.message);
+         }
+     })
+  }
+  updateProduct(){
+    this.productService.updateProducts(this.productObject).subscribe((res: any) => {
+      if(res.result){
+       alert('products has been Updated');
+       this.getAllProduct();
+      }else{
+       alert(res.message);
+      }
+  })
+  }
+  onDelete(id:number){
+    const isDelete = confirm('Are you sure you want to delete this product?')
+    if(isDelete){
+      this.productService.deleteProducts(id).subscribe((res: any) => {
+        if(res.result){
+         alert('products has been deleted');
+         this.getAllProduct();
+      } else{
+         alert(res.message);
+      }
+    })
+    } 
+  }
 
+  onEdit(item:any){
+    this.productObject = item;
+    this.openSidePanel();
+  }
+
+  getAllProduct(){
+    this.productService.getAllProducts().subscribe((res: any) => {
+      //  console.log(res.data);
+       this.productList = res.data;
+    })
   }
   getAllCategories(){
     this.productService.getAllCategories().subscribe((res: any) => {
